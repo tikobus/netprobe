@@ -1,0 +1,24 @@
+# NetProbe 容器编排示例
+# 用法: docker compose up -d
+services:
+  netprobe:
+    image: ghcr.io/YOUR_GITHUB_OWNER/netprobe:latest   # 替换为你的 GitHub 用户名/组织
+    build: .                                          # 本地构建时使用
+    container_name: netprobe
+    restart: unless-stopped
+    ports:
+      - "8080:8080"                                   # Web 界面 / API
+    volumes:
+      - netprobe-data:/var/lib/netprobe               # SQLite 数据
+      - netprobe-logs:/var/log/netprobe               # 探测日志（按天滚动）
+      # - ./config.yaml:/etc/netprobe/config.yaml:ro  # 自定义配置（可选）
+    environment:
+      TZ: Asia/Shanghai
+      # NETPROBE_ADDR: ":8080"                        # 环境变量覆盖
+    # 以 root 运行默认支持原生 ICMP；降权运行需额外授权：
+    # user: "65534"
+    # cap_add: [NET_RAW]
+
+volumes:
+  netprobe-data:
+  netprobe-logs:
