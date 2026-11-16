@@ -1,0 +1,12 @@
+bin/
+data/
+logs/
+dist-*/
+*.tar.gz
+*.db
+*.db-wal
+*.db-shm
+*.test
+
+# macOS
+.DS_Store

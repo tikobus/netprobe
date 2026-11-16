@@ -1,0 +1,24 @@
+# NetProbe 配置文件示例
+# 所有路径均相对于工作目录，生产部署见 deploy/install.sh
+
+server:
+  addr: ":8080"                 # Web 监听地址
+  basic_auth:
+    enabled: false              # 开启后 Web/API 需要 Basic Auth
+    username: admin
+    password: change-me
+
+storage:
+  db_path: data/netprobe.db     # SQLite 数据库路径
+  db_retain_days: 7             # 原始探测记录保留天数（0 = 永不清理）
+
+log:
+  dir: logs                     # 探测日志文件目录（按天滚动）
+  retain_days: 30               # 日志保留天数
+  level: info                   # debug | info | warn | error
+
+prober:
+  concurrency: 32               # 探测协程池大小
+  default_interval: 30          # 新建设备默认探测周期（秒）
+  default_timeout: 5            # 默认超时（秒）
+  default_retries: 2            # 默认失败重试次数
