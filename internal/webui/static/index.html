@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NetProbe · 网络设备探活</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">📡 NetProbe</div>
+  <nav>
+    <a href="#/" id="nav-dash">总览</a>
+    <a href="#/logs" id="nav-logs">探测日志</a>
+  </nav>
+  <div class="header-right">
+    <button class="btn primary" onclick="ui.openDeviceForm()">+ 添加设备</button>
+  </div>
+</header>
+<main id="app">
+  <div class="loading">加载中…</div>
+</main>
+
+<div id="modal-mask" class="hidden">
+  <div class="modal" id="modal"></div>
+</div>
+<div id="toast" class="hidden"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
